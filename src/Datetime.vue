@@ -1,44 +1,5 @@
 <template>
   <div class="vdatetime">
-      <v-dialog
-      v-model="dialog"
-      width="500"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="red lighten-2"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Click Me
-        </v-btn>
-      </template>
-
-      <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Privacy Policy
-        </v-card-title>
-
-        <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupi
-          t non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            text
-            @click="dialog = false"
-          >
-            I accept
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
     <slot name="before"></slot>
     <input class="vdatetime-input"
            :class="inputClass"
@@ -53,10 +14,9 @@
     <input v-if="hiddenName" type="hidden" :name="hiddenName" :value="value" @input="setValue">
     <slot name="after"></slot>
     <transition-group name="vdatetime-fade" tag="div">
-      <div key="overlay" v-if="isOpen && !hideBackdrop" class="vdatetime-overlay" @click.self="clickOutside"></div>
+      <div key="overlay" class="vdatetime-overlay" @click.self="clickOutside"></div>
       <datetime-popup
           key="popup"
-          v-if="isOpen"
           :type="type"
           :datetime="popupDate"
           :phrases="phrases"
@@ -187,7 +147,6 @@ export default {
   data () {
     return {
     dialog:false,
-      isOpen: false,
       datetime: datetimeFromISO(this.value)
     }
   },
@@ -251,10 +210,10 @@ export default {
     open (event) {
       event.target.blur()
 
-      this.isOpen = true
+      this.
+      = true
     },
     close () {
-      this.isOpen = false
       this.$emit('close')
     },
     confirm (datetime) {
